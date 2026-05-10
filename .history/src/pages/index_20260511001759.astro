@@ -23,12 +23,6 @@ const latestNotes = [...allNotes]
   )
   .slice(0, MAX_NOTES)
 
-const allIndexes = [...(await getCollection('indexes', ({ data }) => !data.draft))].sort(
-  (a, b) =>
-    new Date(b.data.updatedDate ?? b.data.publishDate).getTime() -
-    new Date(a.data.updatedDate ?? a.data.publishDate).getTime()
-)
-
 const featuredProjects = projects.slice(0, 3)
 
 const imagePath = config.logo.src
@@ -44,7 +38,6 @@ if (!images[imagePath]) {
 const quickLinks = [
   { title: 'Blog', href: '/blog' },
   { title: 'Notes', href: '/notes' },
-  { title: 'Index', href: '/indexes' },
   { title: 'Projects', href: '/projects' },
   { title: 'About', href: '/about' }
 ]
@@ -143,32 +136,6 @@ const quickLinks = [
     </section>
 
     <section class='animate'>
-      <div class='mb-3 flex items-center justify-between'>
-        <h2 class='text-2xl font-medium'>Index</h2>
-        <a href='/indexes' class='text-sm text-muted-foreground hover:underline'>
-          View all →
-        </a>
-      </div>
-      {allIndexes.length ? (
-        <ul class='grid gap-3 sm:grid-cols-2'>
-          {allIndexes.map((item) => (
-            <li class='rounded-xl border p-4'>
-              <a href={`/indexes/${item.id}`} class='text-base font-medium hover:underline'>
-                {item.data.title}
-              </a>
-              <p class='mt-1 text-sm text-muted-foreground'>{item.data.description}</p>
-              <p class='mt-2 text-xs text-muted-foreground'>
-                {item.data.category}
-              </p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class='text-muted-foreground'>No index yet.</p>
-      )}
-    </section>
-
-    <section class='animate'>
       <h2 class='mb-3 text-2xl font-medium'>Education</h2>
       <div class='grid gap-3'>
         <Card
@@ -189,7 +156,7 @@ const quickLinks = [
         <Card
           as='a'
           class='edu-card'
-          heading='成都锦江区嘉祥外国语高级中学'
+          heading='九江一中'
           subheading='High School Education'
           date='September 2021 - June 2024'
           href='https://jjzx.jxfls.com'

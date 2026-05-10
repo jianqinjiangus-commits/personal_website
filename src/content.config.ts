@@ -71,4 +71,26 @@ const notes = defineCollection({
     })
 })
 
-export const collections = { blog, docs, notes }
+const indexes = defineCollection({
+  loader: glob({ base: './src/content/indexes', pattern: '**/*.{md,mdx}' }),
+  schema: () =>
+    z.object({
+      title: z.string().max(80),
+      description: z.string().max(200),
+      publishDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+      category: z.string(),
+      type: z.enum([
+        'course-note',
+        'paper-note',
+        'research-note',
+        'problem-solution',
+        'reading-list',
+        'workflow'
+      ]),
+      draft: z.boolean().default(false)
+    })
+})
+
+export const collections = { blog, docs, notes, indexes }

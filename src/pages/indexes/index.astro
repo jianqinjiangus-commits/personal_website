@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content'
+
+import { Button } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+const allIndexes = [...(await getCollection('indexes', ({ data }) => !data.draft))].sort(
+  (a, b) =>
+    new Date(b.data.updatedDate ?? b.data.publishDate).getTime() -
+    new Date(a.data.updatedDate ?? a.data.publishDate).getTime()
+)
+---
+
+<PageLayout
+  meta={{
+    title: 'Index',
+    description: '总索引：集中管理科学计算、分析学与量子计算相关索引内容。'
+  }}
+>
+  <Button title='Back' href='/' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 text-3xl font-medium'>Index</h1>
+      <p class='text-muted-foreground'>
+        这里集中放置各方向的总索引，你可以从索引直接进入对应笔记。
+      </p>
+    </div>
+
+    <section id='content' class='animate mt-8'>
+      {allIndexes.length ? (
+        <ul class='grid gap-3 sm:grid-cols-2'>
+          {allIndexes.map((item) => (
+            <li class='rounded-xl border p-4'>
+              <a href={`/indexes/${item.id}`} class='text-base font-medium hover:underline'>
+                {item.data.title}
+              </a>
+              <p class='mt-1 text-sm text-muted-foreground'>{item.data.description}</p>
+              <p class='mt-2 text-xs text-muted-foreground'>
+                {item.data.category} ·
+                {' '}
+                {new Date(item.data.updatedDate ?? item.data.publishDate).toLocaleDateString('zh-CN')}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class='text-muted-foreground'>No index content yet.</p>
+      )}
+    </section>
+  </main>
+</PageLayout>
+

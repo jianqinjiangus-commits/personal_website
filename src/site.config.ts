@@ -33,6 +33,7 @@ export const theme: ThemeUserConfig = {
     menu: [
       { title: 'Blog', link: '/blog' },
       { title: 'Notes', link: '/notes' },
+      { title: 'Index', link: '/indexes' },
       { title: 'Projects', link: '/projects' },
       { title: 'About', link: '/about' },
       { title: 'Links', link: '/links' }

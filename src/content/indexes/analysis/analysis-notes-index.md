@@ -1,8 +1,8 @@
 ---
 title: "Analysis Notes Index"
 description: "分析学笔记索引：覆盖核心定义、定理、证明框架与例题总结。"
-publishDate: 2026-05-10
-updatedDate: 2026-05-10
+publishDate: 2026-05-11
+updatedDate: 2026-05-11
 tags:
   - analysis
   - mathematics
@@ -18,3 +18,4 @@ This index tracks analysis notes for definitions, theorems, and proofs.
 > **Theorem.** 这里可以持续补充课程中的关键定理与应用。
 
 **Proof.** 这里记录证明思路与关键步骤。 $\square$
+

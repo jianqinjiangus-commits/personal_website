@@ -20,8 +20,7 @@ import {
 import config from './src/site.config.ts'
 
 export default defineConfig({
-  // TODO: replace with your production domain after deployment.
-  site: 'https://example.com',
+  site: 'https://ton-space.vercel.app',
   trailingSlash: 'never',
   server: { host: true },
   prefetch: {

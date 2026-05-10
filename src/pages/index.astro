@@ -141,13 +141,13 @@ const quickLinks = [
         <Card
           as='a'
           class='edu-card'
-          heading='Peking University'
-          subheading='Mathematics / Computational Mathematics'
+          heading='北京大学'
+          subheading='数学 / 计算数学'
           date='August 2024 - Present'
           href='https://www.pku.edu.cn/'
         >
           <img
-            src='/education/pku-badge.svg'
+            src='/education/pku-badge.png'
             alt='PKU badge'
             class='edu-badge'
             loading='lazy'
@@ -156,13 +156,13 @@ const quickLinks = [
         <Card
           as='a'
           class='edu-card'
-          heading='Jiujiang No.1 High School'
+          heading='九江一中'
           subheading='High School Education'
           date='September 2021 - June 2024'
           href='https://jjzx.jxfls.com'
         >
           <img
-            src='/education/jjzx-badge.svg'
+            src='/education/jjzx-badge.png'
             alt='JJZX badge'
             class='edu-badge'
             loading='lazy'
@@ -200,26 +200,43 @@ const quickLinks = [
   .edu-card {
     overflow: hidden;
     min-height: 11rem;
+    isolation: isolate;
+    background: linear-gradient(90deg, rgba(20, 20, 28, 0.95) 0%, rgba(28, 28, 38, 0.92) 55%, rgba(36, 36, 46, 0.9) 100%);
   }
 
   .edu-card .edu-badge {
     position: absolute;
-    right: -1.25rem;
+    right: -6.25rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 12rem;
-    height: 12rem;
-    opacity: 0.22;
+    width: 24rem;
+    height: 24rem;
+    opacity: 0.34;
     pointer-events: none;
     user-select: none;
+    z-index: -1;
+    object-fit: contain;
+  }
+
+  .edu-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(16, 16, 22, 0.92) 0%, rgba(16, 16, 22, 0.86) 44%, rgba(16, 16, 22, 0.2) 72%, rgba(16, 16, 22, 0.06) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .edu-card :global(h2) {
+    color: #d9f4ff;
   }
 
   @media (max-width: 640px) {
     .edu-card .edu-badge {
-      width: 9rem;
-      height: 9rem;
-      right: -1rem;
-      opacity: 0.17;
+      width: 16rem;
+      height: 16rem;
+      right: -4rem;
+      opacity: 0.26;
     }
   }
 </style>

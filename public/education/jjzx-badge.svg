@@ -1,11 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
   <defs>
-    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1d4ed8"/>
-      <stop offset="1" stop-color="#0e7490"/>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6d9a2"/>
+      <stop offset="0.5" stop-color="#d2a363"/>
+      <stop offset="1" stop-color="#f3d29a"/>
     </linearGradient>
+    <path id="topArc" d="M 170 520 A 342 342 0 0 1 854 520"/>
+    <path id="bottomArc" d="M 854 520 A 342 342 0 0 1 170 520"/>
   </defs>
-  <circle cx="120" cy="120" r="104" fill="url(#g2)"/>
-  <circle cx="120" cy="120" r="88" stroke="#0f172a" stroke-width="10"/>
-  <path d="M72 168V74h20v74H72Zm38 0V74h24l22 28V74h20v94h-20l-26-34v34h-20Zm74 0v-20h20v20h-20Z" fill="#0f172a"/>
+
+  <!-- outer ring -->
+  <circle cx="512" cy="512" r="390" fill="none" stroke="#2f3f79" stroke-width="78"/>
+  <circle cx="512" cy="512" r="390" fill="none" stroke="url(#gold)" stroke-width="10"/>
+
+  <!-- ring text -->
+  <text font-family="Georgia, serif" font-size="62" letter-spacing="4" fill="#efc689" font-weight="700">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">CHENG DU      JIA XIANG</textPath>
+  </text>
+  <text font-family="Georgia, serif" font-size="68" letter-spacing="3" fill="#efc689" font-weight="700">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">SINCE 2000</textPath>
+  </text>
+
+  <!-- top swirl -->
+  <g transform="translate(512 165)">
+    <path d="M0 -40c50 0 92 42 92 92s-42 92-92 92c-36 0-67-20-82-50 18 16 38 23 58 23 42 0 75-33 75-75s-33-75-75-75c-19 0-37 7-52 20C-62 -22 -34 -40 0 -40Z" fill="#2f3f79"/>
+  </g>
+
+  <!-- center shield -->
+  <path d="M512 270c118 62 190 68 260 104v230c0 122-102 208-260 286-158-78-260-164-260-286V374c70-36 142-42 260-104Z" fill="url(#gold)"/>
+  <path d="M512 295c108 56 173 62 236 95v211c0 108-92 183-236 255-144-72-236-147-236-255V390c63-33 128-39 236-95Z" fill="#2f3f79"/>
+  <path d="M512 295c108 56 173 62 236 95v122H276V390c63-33 128-39 236-95Z" fill="#b03140"/>
+  <rect x="498" y="332" width="28" height="248" fill="url(#gold)"/>
+  <rect x="276" y="500" width="472" height="24" fill="url(#gold)"/>
+
+  <!-- letters -->
+  <text x="420" y="465" font-family="Georgia, serif" font-size="124" fill="#f0cc8f" text-anchor="middle">J</text>
+  <text x="604" y="465" font-family="Georgia, serif" font-size="120" fill="#f0cc8f" text-anchor="middle">X</text>
+  <text x="420" y="630" font-family="Georgia, serif" font-size="120" fill="#f0cc8f" text-anchor="middle">F</text>
+  <text x="512" y="630" font-family="Georgia, serif" font-size="120" fill="#f0cc8f" text-anchor="middle">L</text>
+  <text x="606" y="630" font-family="Georgia, serif" font-size="120" fill="#f0cc8f" text-anchor="middle">S</text>
 </svg>

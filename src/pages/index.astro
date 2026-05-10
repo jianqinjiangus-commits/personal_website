@@ -140,18 +140,34 @@ const quickLinks = [
       <div class='grid gap-3'>
         <Card
           as='a'
+          class='edu-card'
           heading='Peking University'
           subheading='Mathematics / Computational Mathematics'
           date='August 2024 - Present'
           href='https://www.pku.edu.cn/'
-        />
+        >
+          <img
+            src='/education/pku-badge.svg'
+            alt='PKU badge'
+            class='edu-badge'
+            loading='lazy'
+          />
+        </Card>
         <Card
           as='a'
+          class='edu-card'
           heading='Jiujiang No.1 High School'
           subheading='High School Education'
           date='September 2021 - June 2024'
           href='https://jjzx.jxfls.com'
-        />
+        >
+          <img
+            src='/education/jjzx-badge.svg'
+            alt='JJZX badge'
+            class='edu-badge'
+            loading='lazy'
+          />
+        </Card>
       </div>
     </section>
 
@@ -179,3 +195,31 @@ const quickLinks = [
     </section>
   </main>
 </PageLayout>
+
+<style>
+  .edu-card {
+    overflow: hidden;
+    min-height: 11rem;
+  }
+
+  .edu-card .edu-badge {
+    position: absolute;
+    right: -1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12rem;
+    height: 12rem;
+    opacity: 0.22;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (max-width: 640px) {
+    .edu-card .edu-badge {
+      width: 9rem;
+      height: 9rem;
+      right: -1rem;
+      opacity: 0.17;
+    }
+  }
+</style>

@@ -1,65 +1,59 @@
 ---
-import links from '@/public/links.json'
-import config from 'virtual:config'
-
-import { Collapse, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
-import FriendList from '@/components/links/FriendList.astro'
+import { linkApplyInfo, myLinks, references } from '@/data/links'
 
 const headings = [
-  { depth: 2, slug: 'common-links', text: 'Common Links' },
-  { depth: 2, slug: 'special-links', text: 'Special Links' },
+  { depth: 2, slug: 'my-links', text: 'My Links' },
+  { depth: 2, slug: 'friends-references', text: 'Friends / References' },
   { depth: 2, slug: 'apply-links', text: 'Apply Links' }
 ]
 
-const { friends } = links
-const linksConf = config.integ.links
-const linkEditPage = 'https://github.com/cworld1/astro-theme-pure/blob/main/public/links.json'
+const isTodo = (val: string) => val.toUpperCase().startsWith('TODO')
 ---
 
-<PageLayout title='Links' {headings} comment>
-  <p>They're sorted randomly.</p>
-  <h2 id='common-links'>Common Links</h2>
-  <FriendList list={friends[0]} />
-  <Collapse title='Links with Bad Status'>
-    <FriendList list={friends[1]} />
-  </Collapse>
-  <Collapse title='Link History Book'>
-    <Timeline events={linksConf.logbook} />
-  </Collapse>
-  <h2 id='special-links'>Special Links</h2>
-  <FriendList list={friends[2]} />
+<PageLayout title='Links' {headings}>
+  <h2 id='my-links'>My Links</h2>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {myLinks.map((item) => (
+      <article class='rounded-xl border p-4'>
+        <h3 class='text-base font-medium'>{item.name}</h3>
+        <p class='mt-1 text-sm text-muted-foreground'>{item.desc}</p>
+        <p class='mt-2 text-sm'>
+          {isTodo(item.link) ? (
+            <span class='text-muted-foreground'>Coming soon</span>
+          ) : (
+            <a href={item.link} target={item.link.startsWith('http') ? '_blank' : undefined} rel='noreferrer'>
+              {item.link}
+            </a>
+          )}
+        </p>
+      </article>
+    ))}
+  </div>
+
+  <h2 id='friends-references'>Friends / References</h2>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {references.map((item) => (
+      <article class='rounded-xl border p-4'>
+        <h3 class='text-base font-medium'>{item.name}</h3>
+        <p class='mt-1 text-sm text-muted-foreground'>{item.desc}</p>
+        <p class='mt-2 text-sm'>
+          <a href={item.link} target='_blank' rel='noreferrer'>
+            {item.link}
+          </a>
+        </p>
+      </article>
+    ))}
+  </div>
 
   <h2 id='apply-links'>Apply Links</h2>
-  <p>本站信息（点击复制）The site information (click to copy)：</p>
+  <p>本站信息 Site information:</p>
   <blockquote class='not-prose grid grid-cols-[auto_1fr] gap-x-2 break-words border-s-4 ps-4'>
-    {
-      linksConf.applyTip.map(({ name, val }) => {
-        const script = `navigator.clipboard.writeText('${val}');document.dispatchEvent(new CustomEvent('toast',{detail:{message:'Copied "${val}" to clipboard!'}}))`
-        return (
-          <>
-            <span class='text-end'>{name}:</span>
-            <samp class='cursor-pointer' onclick={script}>
-              {val}
-            </samp>
-          </>
-        )
-      })
-    }
+    {linkApplyInfo.map((item) => (
+      <>
+        <span class='text-end'>{item.name}:</span>
+        <samp>{item.val}</samp>
+      </>
+    ))}
   </blockquote>
-
-  <p>
-    可通过下方留言或 <a href={linkEditPage} target='_blank'>提交 PR</a> 申请友链。申请说明：<br />
-    Apply your link by leaving comment or <a href={linkEditPage} target='_blank'>Submitting a PR</a
-    >. Additional info:
-  </p>
-  <ul>
-    <li>推荐了本站 You've recommended our link on your website</li>
-    <li>站点活着且有正式域名 Make sure your site is alive with a formal domain</li>
-    <li>
-      至少五篇原创文章且最近一年更新过 At least 5 original articles and exists articles released in
-      recent year
-    </li>
-    <li>内容不违反国家法律 Content does not violate laws</li>
-  </ul>
 </PageLayout>

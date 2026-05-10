@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content'
+
+import { Button } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+const allNotes = [...(await getCollection('notes', ({ data }) => !data.draft))].sort(
+  (a, b) =>
+    new Date(b.data.updatedDate ?? b.data.publishDate).getTime() -
+    new Date(a.data.updatedDate ?? a.data.publishDate).getTime()
+)
+
+const grouped = allNotes.reduce<Record<string, typeof allNotes>>((acc, note) => {
+  const key = note.data.category
+  if (!acc[key]) acc[key] = []
+  acc[key].push(note)
+  return acc
+}, {})
+
+const categories = [
+  'Mathematics',
+  'Numerical Analysis',
+  'Scientific Computing',
+  'PDE',
+  'Probability',
+  'Complex Analysis',
+  'Quantum Computing',
+  'Hamiltonian Learning',
+  'Machine Learning',
+  'Web Notes'
+]
+
+const latest = allNotes.slice(0, 5)
+---
+
+<PageLayout
+  meta={{
+    title: 'Notes',
+    description: '课程笔记、论文阅读、数学推导与学习记录。'
+  }}
+>
+  <Button title='Back' href='/' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 text-3xl font-medium'>Notes</h1>
+      <p class='text-muted-foreground'>
+        Notes 用于持续整理课程笔记、论文阅读、数学推导、工作流和学习记录。
+      </p>
+    </div>
+
+    <section id='content' class='animate mt-6'>
+      <h2 class='text-xl font-medium'>Categories</h2>
+      <ul class='mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3'>
+        {categories.map((category) => (
+          <li class='rounded-xl border px-3 py-2 text-sm'>
+            <span>{category}</span>
+            <span class='ms-2 text-xs text-muted-foreground'>
+              {grouped[category]?.length ?? 0}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class='animate mt-8'>
+      <h2 class='text-xl font-medium'>Recently Updated</h2>
+      {latest.length ? (
+        <ul class='mt-3 grid gap-3 sm:grid-cols-2'>
+          {latest.map((note) => (
+            <li class='rounded-xl border p-4'>
+              <a href={`/notes/${note.id}`} class='text-base font-medium hover:underline'>
+                {note.data.title}
+              </a>
+              <p class='mt-1 text-sm text-muted-foreground'>{note.data.description}</p>
+              <p class='mt-2 text-xs text-muted-foreground'>
+                {note.data.category} ·
+                {' '}
+                {new Date(note.data.updatedDate ?? note.data.publishDate).toLocaleDateString('zh-CN')}
+              </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class='mt-3 text-muted-foreground'>No notes yet.</p>
+      )}
+    </section>
+
+    <section class='animate mt-8'>
+      <h2 class='text-xl font-medium'>Recommended Reading Order</h2>
+      <ol class='mt-3 list-decimal ps-6 text-muted-foreground'>
+        <li>
+          <a href='/notes/numerical-analysis/numerical-analysis-notes-index' class='hover:underline'>
+            Numerical Analysis Notes Index
+          </a>
+        </li>
+        <li>
+          <a href='/notes/complex-analysis/complex-analysis-notes-index' class='hover:underline'>
+            Complex Analysis Notes Index
+          </a>
+        </li>
+        <li>
+          <a href='/notes/quantum-computing/quantum-computing-reading-list' class='hover:underline'>
+            Quantum Computing Reading List
+          </a>
+        </li>
+      </ol>
+    </section>
+  </main>
+</PageLayout>

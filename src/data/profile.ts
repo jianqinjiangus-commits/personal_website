@@ -14,13 +14,10 @@ export const profile = {
   introZh:
     '我是 TON，目前就读于 PKU 数学/计算数学方向，大二。这个网站用于整理我的课程笔记、博客、论文阅读、数值实验、量子计算学习记录和个人项目。',
   interests: [
-    'Numerical Analysis',
-    'Scientific Computing',
-    'PDEs',
     'Quantum Algorithms',
-    'Hamiltonian Learning',
-    'Classical Shadows',
-    'Carleman Linearization',
-    'Markdown / LaTeX Notes'
+    'Quantum Learning',
+    'PDEs',
+    'Scientific Computing',
+    'Analysis'
   ]
 } as const

@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content'
 
 import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
-import { Button, Icon } from 'astro-pure/user'
+import { Button, Card, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import { profile } from '@/data/profile'
 import { projects } from '@/data/projects'
@@ -133,6 +133,26 @@ const quickLinks = [
       ) : (
         <p class='text-muted-foreground'>No notes yet.</p>
       )}
+    </section>
+
+    <section class='animate'>
+      <h2 class='mb-3 text-2xl font-medium'>Education</h2>
+      <div class='grid gap-3'>
+        <Card
+          as='a'
+          heading='Peking University'
+          subheading='Mathematics / Computational Mathematics'
+          date='August 2024 - Present'
+          href='https://www.pku.edu.cn/'
+        />
+        <Card
+          as='a'
+          heading='Jiujiang No.1 High School'
+          subheading='High School Education'
+          date='September 2021 - June 2024'
+          href='https://jjzx.jxfls.com'
+        />
+      </div>
     </section>
 
     <section class='animate'>

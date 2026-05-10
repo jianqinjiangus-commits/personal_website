@@ -1,21 +1,22 @@
 ---
-title: "Quantum Computing Reading List"
-description: "量子计算方向的阅读入口，包含核心主题、阅读顺序和后续笔记规划。"
+title: "Quantum Computing Paper List"
+description: "量子计算论文清单：用于持续记录论文阅读顺序、核心问题与笔记链接。"
 publishDate: 2026-05-10
 updatedDate: 2026-05-10
 tags:
   - quantum-computing
-  - reading-list
+  - paper-reading
 category: "Quantum Computing"
 type: "reading-list"
 draft: false
 ---
 
-这份清单用于整理量子计算学习路径，重点覆盖：
+This list is used to track papers in quantum computing and organize structured reading notes.
 
-1. Quantum Algorithms；
-2. Hamiltonian Learning；
-3. Classical Shadows；
-4. Quantum Information。
+这份清单用于整理量子计算方向论文阅读，并逐步链接到每篇论文的结构化笔记。
 
-后续每一篇论文阅读将进一步拆分为独立笔记并互相链接。
+1. Quantum Algorithms;
+2. Quantum Learning;
+3. Hamiltonian Learning;
+4. Classical Shadows;
+5. Quantum Information.

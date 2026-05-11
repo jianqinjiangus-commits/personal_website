@@ -13,16 +13,16 @@ const allIndexes = [...(await getCollection('indexes', ({ data }) => !data.draft
 
 <PageLayout
   meta={{
-    title: 'Index',
-    description: '总索引：集中管理科学计算、分析学与量子计算相关索引内容。'
+    title: 'Knowledge base',
+    description: '知识库：集中管理科学计算、分析学与量子计算相关内容。'
   }}
 >
   <Button title='Back' href='/' variant='back' />
   <main class='mt-6 lg:mt-10'>
     <div id='content-header' class='animate'>
-      <h1 class='mb-6 text-3xl font-medium'>Index</h1>
+      <h1 class='mb-6 text-3xl font-medium'>Knowledge base</h1>
       <p class='text-muted-foreground'>
-        这里集中放置各方向的总索引，你可以从索引直接进入对应笔记。
+        这里集中放置各方向的知识库入口，你可以直接进入对应笔记。
       </p>
     </div>
 
@@ -44,9 +44,8 @@ const allIndexes = [...(await getCollection('indexes', ({ data }) => !data.draft
           ))}
         </ul>
       ) : (
-        <p class='text-muted-foreground'>No index content yet.</p>
+        <p class='text-muted-foreground'>No knowledge base content yet.</p>
       )}
     </section>
   </main>
 </PageLayout>
-

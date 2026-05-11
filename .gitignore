@@ -5,6 +5,9 @@ dist/
 ### Vercel ###
 .vercel/
 
+### Netlify ###
+.netlify/
+
 ### Vim ###
 [._]*.un~
 

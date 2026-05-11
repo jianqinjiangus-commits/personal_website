@@ -20,7 +20,7 @@ import {
 import config from './src/site.config.ts'
 
 export default defineConfig({
-  site: 'https://ton-space.vercel.app',
+  site: 'https://ton-space.netlify.app',
   trailingSlash: 'never',
   server: { host: true },
   prefetch: {

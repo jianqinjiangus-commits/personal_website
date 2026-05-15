@@ -15,9 +15,9 @@ This list is used to track papers in quantum computing and organize structured r
 
 这份清单用于整理量子计算方向论文阅读，并逐步链接到每篇论文的结构化笔记。
 
-1. Quantum Algorithms;
-2. Quantum Learning;
-3. Hamiltonian Learning;
-4. Classical Shadows;
-5. Quantum Information.
-
+1. [局域且高效地学习量子 Gibbs 态（arXiv:2504.02706）](/notes/quantum-computing/learning-quantum-gibbs-states-cn)
+2. Quantum Algorithms;
+3. Quantum Learning;
+4. Hamiltonian Learning;
+5. Classical Shadows;
+6. Quantum Information.
